@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #F0AE4C;
+    }
+    label{
+      font-size: xx-large;
+      font-weight: 900;
+      margin: 2rem;
+      color: #353838;
+    }
+    select{
+      font-size: large;
+      margin: 2px;
+      width: 250px;
+      height: 60px;
+      color: #ffffff;
+      background-color: #0F5A97;
+       border-radius: 15px;
+       border: 1px solid white;
+       padding: 15px;
+       font-style:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    }
+    button{
+      margin: 2rem;
+       width: 10rem;
+      height: 50px;
+      color: orange;
+      background-color: red;
+      border-radius: 15px;
+        border: 1px solid white;
+      pointer-events: stroke;
+      font-style:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    }
+    div{
+      width: 50rem;
+      height: 50px;
+      font-size: xx-large;
+      font-weight: 900;
+      color:#DD592F;
+    }
+    
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature-based Song Suggestions</title>
+</head>
+<body>
+<label for="temperature">Select a range of temp(in degree celcius) :</label>
+<select id= "temperature">
+  
+  <option value= "">Select a temp range</option>
+  <option value= 05>between 1 and 10</option>
+  <option value= 15>beween 10 and 20</option>
+  <option value= 25>between 20 and 30</option>
+  <option value= 35>between 30 and 40</option>
+  <option value= 45>between 40 and 50</option>
+  <option value= 55>more than 50</option>
+</select>
+<button type = "button" onclick= "temperature()">
+Get song suggestions.
+</button>
+<div id= "demo"></div>
+ <script>
+  function temperature(){
+	const temperatureInput = document.getElementById("temperature").value;
+  const temperature = parseFloat(temperatureInput);
+  
+  let song = "";
+  if(isNaN(temperature)){
+  	song= "Please select a valid option."
+  } else {
+  	if(temperature <10){
+    	song = "Note: In this temperature you should listen Bhakti."
+    } else if(temperature>=10 && temperature<= 20) {
+    	song = "Note: In this temperature you should listen Romantic song.";
+    }  else if(temperature>=20 && temperature<= 30) {
+    	song = "Note: In this temperature you should listen shah rukh khan's song."
+    }  else if(temperature>=30 && temperature<= 40) {
+    	song = "Note: In this temperature you should listen Haryanvi song."
+    }  else if(temperature>=40 && temperature<= 50) {
+    	song = "Note: In this temperature you should listen Bhojpuri song."
+    } else {
+    	song = "Note: In this temperature you will not be alive to listen any song."
+    }
+  }
+  document.getElementById("demo").innerHTML = song;
+}
+ </script>
+</body>
+</html>
